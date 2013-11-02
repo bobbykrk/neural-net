@@ -1,3 +1,4 @@
+library(MASS)
 pts2 <- mvrnorm(n=100, c(10, 10), matrix(c(8, 1, 7, 1), 2, 2), empirical = TRUE)
 pts1 <- mvrnorm(n=100, c(0, 0), matrix(c(10, 3, 3, 2), 2, 2), empirical = TRUE)
 plot(c(pts1,pts2))
