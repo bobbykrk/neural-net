@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="neural-net:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/neural_net_jar</output-path>
+    <root id="archive" name="neural-net.jar">
+      <element id="module-output" name="neural-net" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
