@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_neural-net" default="compile.module.neural-net">
+  <dirname property="module.neural-net.basedir" file="${ant.file.module_neural-net}"/>
+  
+  <property name="module.jdk.home.neural-net" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.neural-net" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.neural-net" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.neural-net" value="${compiler.args}"/>
+  
+  <property name="neural-net.output.dir" value="${module.neural-net.basedir}/out/production/neural-net"/>
+  <property name="neural-net.testoutput.dir" value="${module.neural-net.basedir}/out/test/neural-net"/>
+  
+  <path id="neural-net.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="neural-net.module.production.classpath">
+    <path refid="${module.jdk.classpath.neural-net}"/>
+    <pathelement location="${basedir}/encog-core-3.2.0-SNAPSHOT.jar"/>
+  </path>
+  
+  <path id="neural-net.runtime.production.module.classpath">
+    <pathelement location="${neural-net.output.dir}"/>
+    <pathelement location="${basedir}/encog-core-3.2.0-SNAPSHOT.jar"/>
+  </path>
+  
+  <path id="neural-net.module.classpath">
+    <path refid="${module.jdk.classpath.neural-net}"/>
+    <pathelement location="${neural-net.output.dir}"/>
+    <pathelement location="${basedir}/encog-core-3.2.0-SNAPSHOT.jar"/>
+  </path>
+  
+  <path id="neural-net.runtime.module.classpath">
+    <pathelement location="${neural-net.testoutput.dir}"/>
+    <pathelement location="${neural-net.output.dir}"/>
+    <pathelement location="${basedir}/encog-core-3.2.0-SNAPSHOT.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.neural-net">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.neural-net">
+    <patternset refid="excluded.from.module.neural-net"/>
+  </patternset>
+  
+  <path id="neural-net.module.sourcepath">
+    <dirset dir="${module.neural-net.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.neural-net" depends="compile.module.neural-net.production,compile.module.neural-net.tests" description="Compile module neural-net"/>
+  
+  <target name="compile.module.neural-net.production" depends="register.custom.compilers" description="Compile module neural-net; production classes">
+    <mkdir dir="${neural-net.output.dir}"/>
+    <javac2 destdir="${neural-net.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.neural-net}/javac">
+      <compilerarg line="${compiler.args.neural-net}"/>
+      <bootclasspath refid="neural-net.module.bootclasspath"/>
+      <classpath refid="neural-net.module.production.classpath"/>
+      <src refid="neural-net.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.neural-net"/>
+    </javac2>
+    
+    <copy todir="${neural-net.output.dir}">
+      <fileset dir="${module.neural-net.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.neural-net.tests" depends="register.custom.compilers,compile.module.neural-net.production" description="compile module neural-net; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.neural-net" description="cleanup module">
+    <delete dir="${neural-net.output.dir}"/>
+    <delete dir="${neural-net.testoutput.dir}"/>
+  </target>
+</project>
