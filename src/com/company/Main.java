@@ -35,6 +35,7 @@ import org.encog.util.arrayutil.NormalizationAction;
 import org.encog.util.csv.CSVFormat;
 
 import javax.swing.*;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -88,16 +89,16 @@ public class Main {
 //
 //        }
 
-
-        normalizeFile("test.csv","test-norm.csv");
-            ev_retrain();
+        int output_count = 0;
+        output_count = normalizeFile("test.csv","test-norm.csv");
+            ev_retrain(output_count);
 
 
 
         Encog.getInstance().shutdown();
     }
 
-    public static void ev_retrain()
+    public static void ev_retrain(int output_count)
     {
         int[] a  = {10,10};
         BasicNetwork network = new BasicNetwork();
@@ -111,7 +112,7 @@ public class Main {
         }
 
         // utworzenie warstwy wyjsciowej
-        network.addLayer(new BasicLayer(new ActivationSigmoid(),false,2));
+        network.addLayer(new BasicLayer(new ActivationSigmoid(),false,output_count));
         network.getStructure().finalizeStructure();
         network.reset();
 
@@ -121,7 +122,7 @@ public class Main {
         // setup for training
    //     iteration = 0;
      //   network.randomize();
-        MLDataSet trainingSet = new CSVNeuralDataSet("test-norm.csv", 2,2, true);
+        MLDataSet trainingSet = new CSVNeuralDataSet("test-norm.csv", 2,output_count, false);
         final Backpropagation train = new Backpropagation(network, trainingSet, 0.1, 0.3);
 //        grid.clear();
   //      plotPoints();
@@ -141,8 +142,9 @@ public class Main {
         System.out.println("Neural Network Results:");
         for(MLDataPair pair: trainingSet ) {
             final MLData output = network.compute(pair.getInput());
-            System.out.println(pair.getInput().getData(0) + "," + pair.getInput().getData(1)
-                    + ", actual=" + output.getData(0) + ",ideal=" + pair.getIdeal().getData(0));
+
+            System.out.println(Arrays.toString(pair.getInput().getData())
+                    + ", actual=" + Arrays.toString(output.getData()) + ",ideal=" + Arrays.toString(pair.getIdeal().getData()));
         }
 
 
@@ -165,7 +167,7 @@ public class Main {
         }
     }
 
-    public static void normalizeFile(String source, String target) {
+    public static int normalizeFile(String source, String target) {
 //        File sourceFile = new File(source);
 //        File targetFile = new File(target);
 //
@@ -223,9 +225,9 @@ public class Main {
         norm.setReport(new ConsoleStatusReportable());
         norm.process();
         System.out.println("Output written to: "
-                + rawFile.getPath());
+                + outputFile.getPath());
 
-
+        return names.size();
     }
 }
 
