@@ -12,6 +12,7 @@ import org.encog.neural.networks.layers.BasicLayer;
 import org.encog.neural.networks.training.propagation.resilient.ResilientPropagation;
 import org.encog.neural.networks.training.propagation.back.Backpropagation;
 import org.encog.util.csv.CSVFormat;
+import org.encog.util.csv.ReadCSV;
 import org.encog.util.normalize.DataNormalization;
 import org.encog.util.normalize.input.InputField;
 import org.encog.util.normalize.input.InputFieldCSV;
@@ -34,7 +35,9 @@ import org.encog.util.arrayutil.NormalizationAction;
 import org.encog.util.csv.CSVFormat;
 
 import javax.swing.*;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 /**
  * XOR: This example is essentially the "Hello World" of neural network
@@ -84,6 +87,7 @@ public class Main {
 //
 //
 //        }
+
 
         normalizeFile("test.csv","test-norm.csv");
             ev_retrain();
@@ -178,6 +182,13 @@ public class Main {
 //        norm.setProduceOutputHeaders(true);
 //        norm.normalize(targetFile);
 //        Encog.getInstance().shutdown();
+        ReadCSV r = new ReadCSV(source, false, ',');
+
+        HashSet<String> names = new HashSet();
+        while (r.next()){
+            names.add(r.get(2));
+        }
+
 
         File rawFile = new File(MYDIR, source);
         DataNormalization norm = new DataNormalization();
@@ -187,8 +198,15 @@ public class Main {
         norm.addInputField(inputHorizontalPosition = new InputFieldCSV(true, rawFile, 0));
         norm.addInputField(inputVerticalPosition = new InputFieldCSV(true, rawFile, 1));
         norm.addInputField(inputClass = new InputFieldCSVText(true, rawFile, 2));
-        inputClass.addMapping("red");
-        inputClass.addMapping("blue");
+
+        for (String name : names) {
+            inputClass.addMapping(name);
+        }
+
+
+
+
+
 
         // define how we should normalize
 
