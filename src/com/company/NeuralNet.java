@@ -1,5 +1,8 @@
 package com.company;
 
+import com.martiansoftware.jsap.FlaggedOption;
+import com.martiansoftware.jsap.JSAP;
+import com.martiansoftware.jsap.Switch;
 import org.encog.ConsoleStatusReportable;
 import org.encog.Encog;
 import org.encog.engine.network.activation.ActivationSigmoid;
@@ -39,20 +42,13 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import com.martiansoftware.jsap.*;
+import sun.launcher.resources.launcher;
 
 /**
- * XOR: This example is essentially the "Hello World" of neural network
- * programming.  This example shows how to construct an Encog neural
- * network to predict the output from the XOR operator.  This example
- * uses backpropagation to train the neural network.
- *
- * This example attempts to use a minimum of Encog features to create and
- * train the neural network.  This allows you to see exactly what is going
- * on.  For a more advanced example, that uses Encog factories, refer to
- * the XORFactory example.
  *
  */
-public class Main {
+public class NeuralNet {
     public static final File MYDIR = new File(".");
     /**
      * The input necessary for XOR.
@@ -65,12 +61,55 @@ public class Main {
      */
     public static double XOR_IDEAL[][] = { { 0.0 }, { 1.0 }, { 1.0 }, { 0.0 } };
 
+    public NeuralNet(int[] layers){
+        this.layers = layers;
+        System.out.println(Arrays.toString(layers));
+        int output_count = normalizeFile("test.csv","test-norm.csv");
+        ev_retrain(output_count);
+        Encog.getInstance().shutdown();
+    }
+
     /**
      * The main method.
      * @param args No arguments are used.
      */
-    public static void main(final String args[]) {
-//
+    public static void main(final String args[]) throws Exception {
+
+        SimpleJSAP jsap = new SimpleJSAP(
+                "NeuralNet",
+                "Program używa sieci neuronowej do klasyfikacji punktów na płaszczyźnie",
+                new Parameter[] {
+                        new FlaggedOption( "layer", JSAP.INTEGER_PARSER, null, JSAP.NOT_REQUIRED, 'l', JSAP.NO_LONGFLAG,
+                                "Liczba wezlow w warstwach posrednich" ).setList(true).setListSeparator(','),
+                        new FlaggedOption( "training file", JSAP.STRING_PARSER, "test-norm.csv", JSAP.REQUIRED, 't', "training",
+                                "Plik z danymi trenujacymi" )
+                }
+        );
+
+        JSAPResult config = jsap.parse(args);
+        if ( jsap.messagePrinted() ) System.exit( 1 );
+
+        NeuralNet nn = new NeuralNet(config.getIntArray("layer"));
+
+//        String[] names = config.getStringArray("name");
+//        String[] languages = config.getStringArray("verbose");
+
+
+//        for (int i = 0; i < languages.length; ++i) {
+//            System.out.println("language=" + languages[i]);
+//        }
+
+
+
+//        for (int i = 0; i < config.getInt("count"); ++i) {
+//            for (int j = 0; j < names.length; ++j) {
+//                System.out.println((config.getBoolean("verbose") ? "Hello" : "Hi")
+//                        + ", "
+//                        + names[j]
+//                        + "!");
+//            }
+//        }
+
 //        if (args.length == 0) {
 //            System.out.println("Usage:\n\nXORCSV [xor.csv]");
 //            return;
@@ -89,16 +128,16 @@ public class Main {
 //
 //        }
 
-        int output_count = 0;
-        output_count = normalizeFile("test.csv","test-norm.csv");
-            ev_retrain(output_count);
+//        int output_count = 0;
+//        output_count = normalizeFile("test.csv","test-norm.csv");
+//            ev_retrain(output_count);
 
 
 
-        Encog.getInstance().shutdown();
+//        Encog.getInstance().shutdown();
     }
 
-    public static void ev_retrain(int output_count)
+    public void ev_retrain(int output_count)
     {
         int[] a  = {10,10};
         BasicNetwork network = new BasicNetwork();
@@ -107,7 +146,7 @@ public class Main {
         network.addLayer(new BasicLayer(null,true,2));
 
         //utworzenie warstw ukrytych
-        for (int anA : a) {
+        for (int anA : this.layers) {
             network.addLayer(new BasicLayer(new ActivationSigmoid(), true, anA));
         }
 
@@ -229,5 +268,8 @@ public class Main {
 
         return names.size();
     }
+
+    private static String test_file = null;
+    private int[] layers = null;
 }
 
