@@ -72,51 +72,6 @@ public class NeuralNet {
         if ( jsap.messagePrinted() ) System.exit( 1 );
 
         NeuralNet nn = new NeuralNet(config.getIntArray("layer"), config.getString("training file"));
-
-//        String[] names = config.getStringArray("name");
-//        String[] languages = config.getStringArray("verbose");
-
-
-//        for (int i = 0; i < languages.length; ++i) {
-//            System.out.println("language=" + languages[i]);
-//        }
-
-
-
-//        for (int i = 0; i < config.getInt("count"); ++i) {
-//            for (int j = 0; j < names.length; ++j) {
-//                System.out.println((config.getBoolean("verbose") ? "Hello" : "Hi")
-//                        + ", "
-//                        + names[j]
-//                        + "!");
-//            }
-//        }
-
-//        if (args.length == 0) {
-//            System.out.println("Usage:\n\nXORCSV [xor.csv]");
-//            return;
-//        } else {
-//            final MLDataSet trainingSet = TrainingSetUtil.loadCSVTOMemory(
-//                    CSVFormat.ENGLISH, args[0], false, 2, 1);
-//
-//            BasicNetwork network = new BasicNetwork();
-//            network.addLayer(new BasicLayer(null,true,2));
-//            network.addLayer(new BasicLayer(new ActivationSigmoid(),true,10));
-//            network.addLayer(new BasicLayer(new ActivationSigmoid(),true,10));
-//            network.addLayer(new BasicLayer(new ActivationSigmoid(),false,3));
-//            network.getStructure().finalizeStructure();
-//            network.reset();
-//
-//
-//        }
-
-//        int output_count = 0;
-//        output_count = normalizeFile("test.csv","test-norm.csv");
-//            ev_retrain(output_count);
-
-
-
-//        Encog.getInstance().shutdown();
     }
 
 

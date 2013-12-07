@@ -1,10 +1,11 @@
 <component name="ArtifactManager">
-  <artifact type="javafx" name="neural-net">
+  <artifact type="jar" name="neural-net">
     <output-path>$PROJECT_DIR$/out/artifacts/neural_net</output-path>
-    <root id="root">
-      <element id="archive" name="neural_net.jar">
-        <element id="module-output" name="neural-net" />
-      </element>
+    <root id="archive" name="neural-net.jar">
+      <element id="module-output" name="neural-net" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/JSAP-2.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/opencsv-2.3.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
