@@ -27,6 +27,7 @@ import org.encog.util.normalize.target.NormalizationStorageCSV;
 import org.encog.util.simple.EncogUtility;
 import org.encog.util.simple.TrainingSetUtil;
 import org.encog.ml.data.specific.CSVNeuralDataSet;
+import au.com.bytecode.opencsv.CSVWriter;
 import java.io.File;
 
 import org.encog.Encog;
@@ -39,6 +40,7 @@ import org.encog.util.arrayutil.NormalizationAction;
 import org.encog.util.csv.CSVFormat;
 
 import javax.swing.*;
+import java.io.FileWriter;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -118,7 +120,7 @@ public class NeuralNet {
     }
 
 
-    public NeuralNet(int[] layers, String trainingFile  ){
+    public NeuralNet(int[] layers, String trainingFile  ) throws Exception{
         this.layers = layers;
         this.training_file = trainingFile;
         normalizeFile(trainingFile,"norm" + trainingFile);
@@ -128,7 +130,7 @@ public class NeuralNet {
 
 
 
-    public void ev_retrain()
+    public void ev_retrain() throws Exception
     {
         BasicNetwork network = new BasicNetwork();
 
@@ -159,14 +161,23 @@ public class NeuralNet {
 
         // test the neural network
         System.out.println("Neural Network Results:");
+        CSVWriter outputCSV = new CSVWriter(new FileWriter("output.csv"), ',');
+        String[] cols = {"X", "Y", "color"};
+        outputCSV.writeNext(cols);
         for(MLDataPair pair: trainingSet ) {
             final MLData output = network.compute(pair.getInput());
+            MLData input = pair.getInput();
 
-            System.out.println(Arrays.toString(pair.getInput().getData())
+            System.out.println(Arrays.toString(input.getData())
                     + ", actual=" + Arrays.toString(output.getData())
                     + "\t\t,ideal=" + Arrays.toString(pair.getIdeal().getData())
             );
+
+            String[] row = {Double.toString(input.getData()[0]),Double.toString(input.getData()[1]),"3"};
+            outputCSV.writeNext(row);
         }
+
+        outputCSV.close();
 
 
     }
@@ -178,13 +189,13 @@ public class NeuralNet {
     * Oczekiwany format pliku to
     * <wspolrzedna x>,<wspolrzedna y>,<nazwa koloru>
     * Przykład:
-    * 6.53068170432877,4.22782059769955,red
-    * -3.6645269162385,-1.56901983393263,red
-    * 2.30327785973916,1.77579994052398,blue
-    * -2.58335245652072,1.85762671895065,blue
-    * 0.210664559429051,-1.72101874043196,red
-    * -5.79251691922912,-0.571824073813365,green
-    * -3.80410962610863,0.590043488682297,red
+    * 6.53068170432877,4.22782059769955,1
+    * -3.6645269162385,-1.56901983393263,1
+    * 2.30327785973916,1.77579994052398,2
+    * -2.58335245652072,1.85762671895065,2
+    * 0.210664559429051,-1.72101874043196,1
+    * -5.79251691922912,-0.571824073813365,2
+    * -3.80410962610863,0.590043488682297,1
     *
     * Nazwa koloru sama w sobie nie ma znaczenia, wazne zeby kolory reprezentujace ta
     * sama barwe mialy taka sama reprezentacje tekstowa
