@@ -5,6 +5,7 @@ import com.martiansoftware.jsap.JSAP;
 import com.martiansoftware.jsap.Switch;
 import org.encog.ConsoleStatusReportable;
 import org.encog.Encog;
+import org.encog.engine.network.activation.ActivationRamp;
 import org.encog.engine.network.activation.ActivationSigmoid;
 import org.encog.ml.data.MLData;
 import org.encog.ml.data.MLDataPair;
@@ -50,38 +51,17 @@ import sun.launcher.resources.launcher;
  */
 public class NeuralNet {
     public static final File MYDIR = new File(".");
-    /**
-     * The input necessary for XOR.
-     */
-    public static double XOR_INPUT[][] = { { 0.0, 0.0 }, { 1.0, 0.0 },
-            { 0.0, 1.0 }, { 1.0, 1.0 } };
 
-    /**
-     * The ideal data necessary for XOR.
-     */
-    public static double XOR_IDEAL[][] = { { 0.0 }, { 1.0 }, { 1.0 }, { 0.0 } };
-
-    public NeuralNet(int[] layers){
-        this.layers = layers;
-        System.out.println(Arrays.toString(layers));
-        int output_count = normalizeFile("test.csv","test-norm.csv");
-        ev_retrain(output_count);
-        Encog.getInstance().shutdown();
-    }
-
-    /**
-     * The main method.
-     * @param args No arguments are used.
-     */
     public static void main(final String args[]) throws Exception {
 
+        // do obslugi opcji wykorzystuje JSAP http://www.martiansoftware.com/jsap/
         SimpleJSAP jsap = new SimpleJSAP(
                 "NeuralNet",
                 "Program używa sieci neuronowej do klasyfikacji punktów na płaszczyźnie",
                 new Parameter[] {
                         new FlaggedOption( "layer", JSAP.INTEGER_PARSER, null, JSAP.NOT_REQUIRED, 'l', JSAP.NO_LONGFLAG,
                                 "Liczba wezlow w warstwach posrednich" ).setList(true).setListSeparator(','),
-                        new FlaggedOption( "training file", JSAP.STRING_PARSER, "test-norm.csv", JSAP.REQUIRED, 't', "training",
+                        new FlaggedOption( "training file", JSAP.STRING_PARSER, "test.csv", JSAP.REQUIRED, 't', "training",
                                 "Plik z danymi trenujacymi" )
                 }
         );
@@ -89,7 +69,7 @@ public class NeuralNet {
         JSAPResult config = jsap.parse(args);
         if ( jsap.messagePrinted() ) System.exit( 1 );
 
-        NeuralNet nn = new NeuralNet(config.getIntArray("layer"));
+        NeuralNet nn = new NeuralNet(config.getIntArray("layer"), config.getString("training file"));
 
 //        String[] names = config.getStringArray("name");
 //        String[] languages = config.getStringArray("verbose");
@@ -137,9 +117,19 @@ public class NeuralNet {
 //        Encog.getInstance().shutdown();
     }
 
-    public void ev_retrain(int output_count)
+
+    public NeuralNet(int[] layers, String trainingFile  ){
+        this.layers = layers;
+        this.training_file = trainingFile;
+        normalizeFile(trainingFile,"norm" + trainingFile);
+        ev_retrain();
+        Encog.getInstance().shutdown();
+    }
+
+
+
+    public void ev_retrain()
     {
-        int[] a  = {10,10};
         BasicNetwork network = new BasicNetwork();
 
         // utworzenie wezlow wejsciowych
@@ -151,22 +141,12 @@ public class NeuralNet {
         }
 
         // utworzenie warstwy wyjsciowej
-        network.addLayer(new BasicLayer(new ActivationSigmoid(),false,output_count));
+        network.addLayer(new BasicLayer(new ActivationRamp(0.75, 0.25, 1, 0),false,outputNodesNumber));
         network.getStructure().finalizeStructure();
         network.reset();
 
-
-
-
-        // setup for training
-   //     iteration = 0;
-     //   network.randomize();
-        MLDataSet trainingSet = new CSVNeuralDataSet("test-norm.csv", 2,output_count, false);
+        MLDataSet trainingSet = new CSVNeuralDataSet("norm"+training_file, 2,outputNodesNumber, false);
         final Backpropagation train = new Backpropagation(network, trainingSet, 0.1, 0.3);
-//        grid.clear();
-  //      plotPoints();
-    //    pOutput.innerHTML = "Ready";
-
 
         int epoch = 1;
 
@@ -183,93 +163,70 @@ public class NeuralNet {
             final MLData output = network.compute(pair.getInput());
 
             System.out.println(Arrays.toString(pair.getInput().getData())
-                    + ", actual=" + Arrays.toString(output.getData()) + ",ideal=" + Arrays.toString(pair.getIdeal().getData()));
+                    + ", actual=" + Arrays.toString(output.getData())
+                    + "\t\t,ideal=" + Arrays.toString(pair.getIdeal().getData())
+            );
         }
 
 
     }
 
-    public static void dumpFieldInfo(EncogAnalyst analyst) {
-        System.out.println("Fields found in file:");
-        for (AnalystField field : analyst.getScript().getNormalize()
-                .getNormalizedFields()) {
 
-            StringBuilder line = new StringBuilder();
-            line.append(field.getName());
-            line.append(",action=");
-            line.append(field.getAction());
-            line.append(",min=");
-            line.append(field.getActualLow());
-            line.append(",max=");
-            line.append(field.getActualHigh());
-            System.out.println(line.toString());
-        }
-    }
-
-    public static int normalizeFile(String source, String target) {
-//        File sourceFile = new File(source);
-//        File targetFile = new File(target);
-//
-//        EncogAnalyst analyst = new EncogAnalyst();
-//
-//        AnalystWizard wizard = new AnalystWizard(analyst);
-//        wizard.wizard(sourceFile, true, AnalystFileFormat.DECPNT_COMMA);
-//
-//        dumpFieldInfo(analyst);
-//
-//        final AnalystNormalizeCSV norm = new AnalystNormalizeCSV();
-//
-//        norm.analyze(sourceFile, true, CSVFormat.ENGLISH, analyst);
-//        norm.setProduceOutputHeaders(true);
-//        norm.normalize(targetFile);
-//        Encog.getInstance().shutdown();
+    /*
+    * Metoda normalizuje plik source i zapisuje wynik w pliku target
+    * Normalizacji podlegaja wspolrzedne punktu (do zakresu 0..1) oraz kolory punktow (do postaci 1 z N)
+    * Oczekiwany format pliku to
+    * <wspolrzedna x>,<wspolrzedna y>,<nazwa koloru>
+    * Przykład:
+    * 6.53068170432877,4.22782059769955,red
+    * -3.6645269162385,-1.56901983393263,red
+    * 2.30327785973916,1.77579994052398,blue
+    * -2.58335245652072,1.85762671895065,blue
+    * 0.210664559429051,-1.72101874043196,red
+    * -5.79251691922912,-0.571824073813365,green
+    * -3.80410962610863,0.590043488682297,red
+    *
+    * Nazwa koloru sama w sobie nie ma znaczenia, wazne zeby kolory reprezentujace ta
+    * sama barwe mialy taka sama reprezentacje tekstowa
+    */
+    public void normalizeFile(String source, String target) {
         ReadCSV r = new ReadCSV(source, false, ',');
-
-        HashSet<String> names = new HashSet();
+        HashSet<String> colors = new HashSet<String>();
         while (r.next()){
-            names.add(r.get(2));
+            colors.add(r.get(2));
         }
-
+        // zapisuje potrzebna liczbe wezlow wyjsciowych
+        outputNodesNumber = colors.size();
 
         File rawFile = new File(MYDIR, source);
         DataNormalization norm = new DataNormalization();
         InputField inputHorizontalPosition, inputVerticalPosition ;
-        InputFieldCSVText inputClass;
+        InputFieldCSVText inputColor;
 
         norm.addInputField(inputHorizontalPosition = new InputFieldCSV(true, rawFile, 0));
         norm.addInputField(inputVerticalPosition = new InputFieldCSV(true, rawFile, 1));
-        norm.addInputField(inputClass = new InputFieldCSVText(true, rawFile, 2));
+        norm.addInputField(inputColor = new InputFieldCSVText(true, rawFile, 2));
 
-        for (String name : names) {
-            inputClass.addMapping(name);
+        for (String color : colors) {
+            inputColor.addMapping(color);
         }
-
-
-
-
-
-
-        // define how we should normalize
 
         norm.addOutputField(new OutputFieldRangeMapped(inputHorizontalPosition, 0, 1));
         norm.addOutputField(new OutputFieldRangeMapped(inputVerticalPosition, 0, 1));
-        norm.addOutputField(new OutputOneOf(inputClass, 1, 0));
+        norm.addOutputField(new OutputOneOf(inputColor, 1, 0));
 
-        // define where the output should go
+
         File outputFile = new File(MYDIR, target);
         norm.setCSVFormat(CSVFormat.ENGLISH);
         norm.setTarget(new NormalizationStorageCSV(CSVFormat.ENGLISH, outputFile));
 
-        // process
         norm.setReport(new ConsoleStatusReportable());
         norm.process();
-        System.out.println("Output written to: "
-                + outputFile.getPath());
-
-        return names.size();
     }
 
-    private static String test_file = null;
+    private  String training_file = null;
+    private  String test_file = null;
     private int[] layers = null;
+    private int outputNodesNumber = 0;
 }
 
