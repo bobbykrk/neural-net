@@ -7,8 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cfdda3d-08ab-45e5-97a7-92186041fe47" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test_norm_data.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/training_norm_data.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/norm_data.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/norm_test.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/NeuralNet.java" afterPath="$PROJECT_DIR$/src/com/company/NeuralNet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commands.r" afterPath="$PROJECT_DIR$/commands.r" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/metrics.csv" afterPath="$PROJECT_DIR$/metrics.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/normtest.csv" afterPath="$PROJECT_DIR$/normtest.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output.csv" afterPath="$PROJECT_DIR$/output.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="neural-net.iws" />
@@ -18,7 +25,8 @@
     <file path="/test.csv" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1383496650572" ignored="false" />
     <file path="/fragment.java" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1386520652066" ignored="false" />
     <file path="/OutputBinary.java" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1386520689021" ignored="false" />
-    <file path="/NeuralNet.java" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1386529761874" ignored="false" />
+    <file path="/NeuralNet.java" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1386532319544" ignored="false" />
+    <file path="/a.dummy" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1386531402061" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +94,36 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/company/NeuralNet.java" line="167" class="com.company.NeuralNet" package="com.company">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/company/NeuralNet.java" line="168" class="com.company.NeuralNet" package="com.company">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
     </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
@@ -99,11 +137,21 @@
       <file leaf-file-name="NeuralNet.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/NeuralNet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="18" selection-start="4690" selection-end="4690" vertical-scroll-proportion="-0.30769232">
+            <state line="248" column="118" selection-start="9494" selection-end="9494" vertical-scroll-proportion="0.9285714">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7847#7855#0" expanded="true" />
+                <element signature="e#7370#7378#0" expanded="true" />
+                <element signature="e#9312#9320#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataNormalization.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/DataNormalization.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="16" selection-start="1697" selection-end="1697" vertical-scroll-proportion="-6.8">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -407,16 +455,36 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="940" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42675894" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42637643" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32983193" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -424,13 +492,13 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277849" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.249694" sideWeight="0.69434834" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.056603774" sideWeight="0.715749" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28425097" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.056603774" sideWeight="0.5800256" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4199744" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -549,15 +617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/output/nominal/OutputOneOf.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="54" selection-start="597" selection-end="597" vertical-scroll-proportion="-8.16">
-          <folding>
-            <element signature="e#0#1221#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/input/InputFieldCSV.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="75" selection-start="235" selection-end="235" vertical-scroll-proportion="-3.4">
@@ -586,6 +645,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/opencsv-2.3.jar!/au/com/bytecode/opencsv/CSVWriter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="16" selection-start="1808" selection-end="1808" vertical-scroll-proportion="0.38809034">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/DataNormalization.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="16" selection-start="1697" selection-end="1697" vertical-scroll-proportion="-6.8">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/output/nominal/OutputOneOf.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="54" selection-start="597" selection-end="597" vertical-scroll-proportion="-8.16">
+          <folding>
+            <element signature="e#0#1221#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/OutputBinary.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="69" column="22" selection-start="1897" selection-end="1965" vertical-scroll-proportion="0.0">
@@ -596,26 +678,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/DataNormalization.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="16" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.34375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/opencsv-2.3.jar!/au/com/bytecode/opencsv/CSVWriter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="16" selection-start="1808" selection-end="1808" vertical-scroll-proportion="0.38809034">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/NeuralNet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="18" selection-start="4690" selection-end="4690" vertical-scroll-proportion="-0.30769232">
+        <state line="248" column="118" selection-start="9494" selection-end="9494" vertical-scroll-proportion="0.9285714">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7847#7855#0" expanded="true" />
+            <element signature="e#7370#7378#0" expanded="true" />
+            <element signature="e#9312#9320#0" expanded="true" />
           </folding>
         </state>
       </provider>

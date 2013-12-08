@@ -2,7 +2,6 @@ package com.company;
 
 import com.martiansoftware.jsap.FlaggedOption;
 import com.martiansoftware.jsap.JSAP;
-import com.martiansoftware.jsap.Switch;
 import org.encog.ConsoleStatusReportable;
 import org.encog.Encog;
 import org.encog.engine.network.activation.ActivationRamp;
@@ -10,10 +9,8 @@ import org.encog.engine.network.activation.ActivationSigmoid;
 import org.encog.ml.data.MLData;
 import org.encog.ml.data.MLDataPair;
 import org.encog.ml.data.MLDataSet;
-import org.encog.ml.data.basic.BasicMLDataSet;
 import org.encog.neural.networks.BasicNetwork;
 import org.encog.neural.networks.layers.BasicLayer;
-import org.encog.neural.networks.training.propagation.resilient.ResilientPropagation;
 import org.encog.neural.networks.training.propagation.back.Backpropagation;
 import org.encog.util.csv.CSVFormat;
 import org.encog.util.csv.ReadCSV;
@@ -24,28 +21,14 @@ import org.encog.util.normalize.input.InputFieldCSVText;
 import org.encog.util.normalize.output.OutputFieldRangeMapped;
 import org.encog.util.normalize.output.nominal.OutputOneOf;
 import org.encog.util.normalize.target.NormalizationStorageCSV;
-import org.encog.util.simple.EncogUtility;
-import org.encog.util.simple.TrainingSetUtil;
 import org.encog.ml.data.specific.CSVNeuralDataSet;
 import au.com.bytecode.opencsv.CSVWriter;
-import java.io.File;
 
-import org.encog.Encog;
-import org.encog.app.analyst.AnalystFileFormat;
-import org.encog.app.analyst.EncogAnalyst;
-import org.encog.app.analyst.csv.normalize.AnalystNormalizeCSV;
-import org.encog.app.analyst.script.normalize.AnalystField;
-import org.encog.app.analyst.wizard.AnalystWizard;
-import org.encog.util.arrayutil.NormalizationAction;
-import org.encog.util.csv.CSVFormat;
+import java.io.*;
 
-import javax.swing.*;
-import java.io.FileWriter;
-import java.io.PrintWriter;
 import java.util.*;
 
 import com.martiansoftware.jsap.*;
-import sun.launcher.resources.launcher;
 
 /**
  *
@@ -55,8 +38,10 @@ public class NeuralNet {
     public static final double MAX_ERROR = 0.01;
     public static final double MAX_EPOCH = 1000;
 
-    private  String training_file = null;
-    private  String test_file = null;
+    private  String data_file = null;
+    private  String norm_data_file = null;
+    private  String norm_training_file = null;
+    private  String norm_test_file = null;
     private int[] layers = null;
     private int outputNodesNumber = 0;
 
@@ -69,7 +54,7 @@ public class NeuralNet {
                 new Parameter[] {
                         new FlaggedOption( "layer", JSAP.INTEGER_PARSER, null, JSAP.NOT_REQUIRED, 'l', JSAP.NO_LONGFLAG,
                                 "Liczba wezlow w warstwach posrednich" ).setList(true).setListSeparator(','),
-                        new FlaggedOption( "training file", JSAP.STRING_PARSER, "test.csv", JSAP.REQUIRED, 't', "training",
+                        new FlaggedOption( "training file", JSAP.STRING_PARSER, "data.csv", JSAP.REQUIRED, 't', "training",
                                 "Plik z danymi trenujacymi" )
                 }
         );
@@ -83,7 +68,10 @@ public class NeuralNet {
 
     public NeuralNet(int[] layers, String trainingFile  ) throws Exception{
         this.layers = layers;
-        this.training_file = trainingFile;
+        this.data_file = trainingFile;
+        this.norm_data_file = "norm_" + trainingFile;
+        this.norm_test_file = "test_" + norm_data_file;
+        this.norm_training_file = "training_" + norm_data_file;
         run();
         Encog.getInstance().shutdown();
     }
@@ -176,9 +164,10 @@ public class NeuralNet {
     }
 
     public void run() throws Exception {
-        normalizeFile(this.training_file,"norm" + training_file);
-        MLDataSet trainingSet = new CSVNeuralDataSet("norm"+training_file, 2,outputNodesNumber, false);
-        MLDataSet testSet = new CSVNeuralDataSet("norm"+training_file, 2,outputNodesNumber, false);
+        normalizeFile(data_file, norm_data_file, true);
+        divide(0.25);
+        MLDataSet trainingSet = new CSVNeuralDataSet(norm_training_file, 2,outputNodesNumber, false);
+        MLDataSet testSet = new CSVNeuralDataSet(norm_test_file, 2,outputNodesNumber, false);
 
         BasicNetwork network = createNetwork();
         train(network, trainingSet);
@@ -203,14 +192,15 @@ public class NeuralNet {
     * Nazwa koloru sama w sobie nie ma znaczenia, wazne zeby kolory reprezentujace ta
     * sama barwe mialy taka sama reprezentacje tekstowa
     */
-    public void normalizeFile(String source, String target) {
+    public void normalizeFile(String source, String target, boolean outputType) {
         ReadCSV r = new ReadCSV(source, false, ',');
         Set<String> colors = new HashSet<String>();
         while (r.next()){
             colors.add(r.get(2));
         }
         // zapisuje potrzebna liczbe wezlow wyjsciowych
-        outputNodesNumber = Integer.toBinaryString(colors.size()-1).length();
+        if(outputType){outputNodesNumber = colors.size();}
+        else {outputNodesNumber = Integer.toBinaryString(colors.size()-1).length();}
 
         File rawFile = new File(MYDIR, source);
         DataNormalization norm = new DataNormalization();
@@ -227,7 +217,7 @@ public class NeuralNet {
 
         norm.addOutputField(new OutputFieldRangeMapped(inputHorizontalPosition, 0, 1));
         norm.addOutputField(new OutputFieldRangeMapped(inputVerticalPosition, 0, 1));
-        norm.addOutputField(new OutputBinary(inputColor, 1, 0));
+        norm.addOutputField(outputType ? new OutputOneOf(inputColor, 1, 0) : new OutputBinary(inputColor, 1, 0));
 
 
         File outputFile = new File(MYDIR, target);
@@ -236,6 +226,37 @@ public class NeuralNet {
 
         norm.setReport(new ConsoleStatusReportable());
         norm.process();
+    }
+
+    /**
+     * losowo dzieli dane na zbiory: treningowy i testowy
+     * @param val procentowa zawartość zbioru testowego
+     * @throws IOException
+     */
+    public void divide(double val) throws IOException {
+        val = Math.abs(val);
+        if(val>1.0)val/=1.0;
+
+        BufferedReader br = new BufferedReader(new FileReader(norm_data_file));
+        PrintWriter testDataOut = new PrintWriter(norm_test_file);
+        PrintWriter trainingDataOut = new PrintWriter(norm_training_file);
+        List<String> els = new ArrayList<String>();
+        String line = br.readLine();
+        while(line != null){
+            els.add(line);
+            line = br.readLine();
+        }
+        Collections.shuffle(els);
+        int num = (int)(((double)els.size())*val);
+        for(int i=0;i<num;i++){
+            testDataOut.println(els.get(i));
+        }
+        for(int i=num;i<els.size();i++){
+            trainingDataOut.println(els.get(i));
+        }
+        br.close();
+        testDataOut.close();
+        trainingDataOut.close();
     }
 
 }
