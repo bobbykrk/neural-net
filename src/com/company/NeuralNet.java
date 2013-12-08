@@ -41,10 +41,9 @@ import org.encog.util.csv.CSVFormat;
 
 import javax.swing.*;
 import java.io.FileWriter;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.io.PrintWriter;
+import java.util.*;
+
 import com.martiansoftware.jsap.*;
 import sun.launcher.resources.launcher;
 
@@ -53,6 +52,8 @@ import sun.launcher.resources.launcher;
  */
 public class NeuralNet {
     public static final File MYDIR = new File(".");
+    public static final double MAX_ERROR = 0.01;
+    public static final double MAX_EPOCH = 1000;
 
     private  String training_file = null;
     private  String test_file = null;
@@ -83,15 +84,15 @@ public class NeuralNet {
     public NeuralNet(int[] layers, String trainingFile  ) throws Exception{
         this.layers = layers;
         this.training_file = trainingFile;
-        normalizeFile(trainingFile,"norm" + trainingFile);
-        ev_retrain();
+        run();
         Encog.getInstance().shutdown();
     }
 
-
-
-    public void ev_retrain() throws Exception
-    {
+    /**
+     * Budowanie sieci
+     * @return zbudowana sieć neuronowa
+     */
+    public BasicNetwork createNetwork(){
         BasicNetwork network = new BasicNetwork();
 
         // utworzenie wezlow wejsciowych
@@ -106,8 +107,16 @@ public class NeuralNet {
         network.addLayer(new BasicLayer(new ActivationRamp(0.75, 0.25, 1, 0),false,outputNodesNumber));
         network.getStructure().finalizeStructure();
         network.reset();
+        return network;
+    }
 
-        MLDataSet trainingSet = new CSVNeuralDataSet("norm"+training_file, 2,outputNodesNumber, false);
+
+    /**
+     * Trening sieci
+     * @param network sieć
+     * @param trainingSet zbiór danych trenujących
+     */
+    public void train(BasicNetwork network, MLDataSet trainingSet){
         final Backpropagation train = new Backpropagation(network, trainingSet, 0.1, 0.3);
 
         int epoch = 1;
@@ -116,15 +125,21 @@ public class NeuralNet {
             train.iteration();
             System.out.println("Epoch #" + epoch + " Error:" + train.getError());
             epoch++;
-        } while(train.getError() > 0.01 && epoch < 1000);
+        } while(train.getError() > MAX_ERROR && epoch < MAX_EPOCH);
         train.finishTraining();
+    }
+
+    public void predict(BasicNetwork network, MLDataSet testSet) throws Exception
+    {
 
         // test the neural network
         System.out.println("Neural Network Results:");
         CSVWriter outputCSV = new CSVWriter(new FileWriter("output.csv"), ',');
+        PrintWriter metricsOut = new PrintWriter("metrics.csv");
         String[] cols = {"X", "Y", "color"};
+        Map colMap = new HashMap<Integer,Integer>();
         outputCSV.writeNext(cols);
-        for(MLDataPair pair: trainingSet ) {
+        for(MLDataPair pair: testSet ) {
             MLData input = pair.getInput();
             final MLData output = network.compute(input);
 
@@ -135,11 +150,39 @@ public class NeuralNet {
 
             String[] row = {Double.toString(input.getData()[0]),Double.toString(input.getData()[1]),"3"};
             outputCSV.writeNext(row);
+
+            metricsOut.println(getColor(colMap, Arrays.hashCode(normalizeOutput(output.getData()))) + " " +
+                               getColor(colMap, Arrays.hashCode(normalizeOutput(pair.getIdeal().getData()))));
         }
-
         outputCSV.close();
+        metricsOut.close();
+    }
 
+    private String getColor(Map<Integer, Integer> colMap, int col){
+        Integer val = colMap.get(col);
+        if(val == null){
+            val = colMap.size();
+            colMap.put(col,val);
+        }
+        return val.toString();
+    }
 
+    boolean[] normalizeOutput(double[] output){
+        boolean[] res = new boolean[output.length];
+        for(int i=0;i<output.length;i++){
+            res[i] = (output[i] < 0.5);
+        }
+        return res;
+    }
+
+    public void run() throws Exception {
+        normalizeFile(this.training_file,"norm" + training_file);
+        MLDataSet trainingSet = new CSVNeuralDataSet("norm"+training_file, 2,outputNodesNumber, false);
+        MLDataSet testSet = new CSVNeuralDataSet("norm"+training_file, 2,outputNodesNumber, false);
+
+        BasicNetwork network = createNetwork();
+        train(network, trainingSet);
+        predict(network,testSet);
     }
 
 
