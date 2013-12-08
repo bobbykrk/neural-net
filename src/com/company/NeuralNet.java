@@ -54,6 +54,11 @@ import sun.launcher.resources.launcher;
 public class NeuralNet {
     public static final File MYDIR = new File(".");
 
+    private  String training_file = null;
+    private  String test_file = null;
+    private int[] layers = null;
+    private int outputNodesNumber = 0;
+
     public static void main(final String args[]) throws Exception {
 
         // do obslugi opcji wykorzystuje JSAP http://www.martiansoftware.com/jsap/
@@ -72,51 +77,6 @@ public class NeuralNet {
         if ( jsap.messagePrinted() ) System.exit( 1 );
 
         NeuralNet nn = new NeuralNet(config.getIntArray("layer"), config.getString("training file"));
-
-//        String[] names = config.getStringArray("name");
-//        String[] languages = config.getStringArray("verbose");
-
-
-//        for (int i = 0; i < languages.length; ++i) {
-//            System.out.println("language=" + languages[i]);
-//        }
-
-
-
-//        for (int i = 0; i < config.getInt("count"); ++i) {
-//            for (int j = 0; j < names.length; ++j) {
-//                System.out.println((config.getBoolean("verbose") ? "Hello" : "Hi")
-//                        + ", "
-//                        + names[j]
-//                        + "!");
-//            }
-//        }
-
-//        if (args.length == 0) {
-//            System.out.println("Usage:\n\nXORCSV [xor.csv]");
-//            return;
-//        } else {
-//            final MLDataSet trainingSet = TrainingSetUtil.loadCSVTOMemory(
-//                    CSVFormat.ENGLISH, args[0], false, 2, 1);
-//
-//            BasicNetwork network = new BasicNetwork();
-//            network.addLayer(new BasicLayer(null,true,2));
-//            network.addLayer(new BasicLayer(new ActivationSigmoid(),true,10));
-//            network.addLayer(new BasicLayer(new ActivationSigmoid(),true,10));
-//            network.addLayer(new BasicLayer(new ActivationSigmoid(),false,3));
-//            network.getStructure().finalizeStructure();
-//            network.reset();
-//
-//
-//        }
-
-//        int output_count = 0;
-//        output_count = normalizeFile("test.csv","test-norm.csv");
-//            ev_retrain(output_count);
-
-
-
-//        Encog.getInstance().shutdown();
     }
 
 
@@ -165,8 +125,8 @@ public class NeuralNet {
         String[] cols = {"X", "Y", "color"};
         outputCSV.writeNext(cols);
         for(MLDataPair pair: trainingSet ) {
-            final MLData output = network.compute(pair.getInput());
             MLData input = pair.getInput();
+            final MLData output = network.compute(input);
 
             System.out.println(Arrays.toString(input.getData())
                     + ", actual=" + Arrays.toString(output.getData())
@@ -202,12 +162,12 @@ public class NeuralNet {
     */
     public void normalizeFile(String source, String target) {
         ReadCSV r = new ReadCSV(source, false, ',');
-        HashSet<String> colors = new HashSet<String>();
+        Set<String> colors = new HashSet<String>();
         while (r.next()){
             colors.add(r.get(2));
         }
         // zapisuje potrzebna liczbe wezlow wyjsciowych
-        outputNodesNumber = colors.size();
+        outputNodesNumber = Integer.toBinaryString(colors.size()-1).length();
 
         File rawFile = new File(MYDIR, source);
         DataNormalization norm = new DataNormalization();
@@ -224,7 +184,7 @@ public class NeuralNet {
 
         norm.addOutputField(new OutputFieldRangeMapped(inputHorizontalPosition, 0, 1));
         norm.addOutputField(new OutputFieldRangeMapped(inputVerticalPosition, 0, 1));
-        norm.addOutputField(new OutputOneOf(inputColor, 1, 0));
+        norm.addOutputField(new OutputBinary(inputColor, 1, 0));
 
 
         File outputFile = new File(MYDIR, target);
@@ -235,9 +195,5 @@ public class NeuralNet {
         norm.process();
     }
 
-    private  String training_file = null;
-    private  String test_file = null;
-    private int[] layers = null;
-    private int outputNodesNumber = 0;
 }
 

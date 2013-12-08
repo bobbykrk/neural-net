@@ -7,17 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cfdda3d-08ab-45e5-97a7-92186041fe47" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/neural-net.iml" afterPath="$PROJECT_DIR$/neural-net.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output.csv" afterPath="$PROJECT_DIR$/output.csv" />
+      <change type="DELETED" beforePath="D:\Users\Robert\Documents\PhD\studia\WMH\program\normtesttest.csv" afterPath="" />
+      <change type="DELETED" beforePath="D:\Users\Robert\Documents\PhD\studia\WMH\program\test-norm.csv" afterPath="" />
+      <change type="DELETED" beforePath="D:\Users\Robert\Documents\PhD\studia\WMH\program\testtest.csv" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/NeuralNet.java" afterPath="$PROJECT_DIR$/src/com/company/NeuralNet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/neural_net.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/neural_net.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/normtest.csv" afterPath="$PROJECT_DIR$/normtest.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="neural-net.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1386508787296" ignored="false" />
+    <file path="/Dummy.txt" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1386508876308" ignored="false" />
     <file path="/Main.java" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1383496885777" ignored="false" />
     <file path="/test.csv" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1383496650572" ignored="false" />
-    <file path="/fragment.java" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1386508618550" ignored="false" />
+    <file path="/fragment.java" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1386520652066" ignored="false" />
+    <file path="/OutputBinary.java" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1386520689021" ignored="false" />
+    <file path="/NeuralNet.java" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1386518257347" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +74,23 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/company/OutputBinary.java" line="71" class="com.company.OutputBinary" package="com.company">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -81,11 +103,97 @@
       <file leaf-file-name="NeuralNet.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/NeuralNet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="203" column="17" selection-start="7633" selection-end="7633" vertical-scroll-proportion="4.8068967">
+            <state line="169" column="57" selection-start="6518" selection-end="6518" vertical-scroll-proportion="0.53608245">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7713#7721#0" expanded="true" />
+                <element signature="e#6323#6331#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OutputOneOf.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/output/nominal/OutputOneOf.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="54" selection-start="597" selection-end="597" vertical-scroll-proportion="-8.16">
+              <folding>
+                <element signature="e#0#1221#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OutputBinary.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/OutputBinary.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="69" column="22" selection-start="1897" selection-end="1965" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#800#813#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NominalItem.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/output/nominal/NominalItem.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="19" selection-start="791" selection-end="791" vertical-scroll-proportion="-14.96">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InputFieldCSVText.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/input/InputFieldCSVText.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="11" selection-start="419" selection-end="419" vertical-scroll-proportion="-7.48">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InputFieldCSV.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/input/InputFieldCSV.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="75" selection-start="235" selection-end="235" vertical-scroll-proportion="-3.4">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BasicInputField.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/input/BasicInputField.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="78" selection-start="238" selection-end="238" vertical-scroll-proportion="-1.36">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InputField.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/input/InputField.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="17" selection-start="177" selection-end="177" vertical-scroll-proportion="-3.4">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BasicOutputField.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/output/BasicOutputField.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="87" selection-start="248" selection-end="248" vertical-scroll-proportion="-3.4">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OutputField.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/output/OutputField.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="17" selection-start="178" selection-end="178" vertical-scroll-proportion="-3.4">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -111,6 +219,7 @@
         <option value="$PROJECT_DIR$/src/com/company/DisplayPanel.java" />
         <option value="$PROJECT_DIR$/test.csv" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/company/OutputBinary.java" />
         <option value="$PROJECT_DIR$/src/com/company/NeuralNet.java" />
       </list>
     </option>
@@ -149,7 +258,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -203,18 +311,20 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="neural-net" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -230,8 +340,8 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -314,28 +424,28 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3990025" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42675894" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32983193" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871974" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.249694" sideWeight="0.69434834" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15299878" sideWeight="0.6989619" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30103806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15299878" sideWeight="0.5017301" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4982699" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -408,42 +518,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/app/analyst/AnalystFileFormat.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-norm.csv">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.csv">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/DisplayPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="890" selection-end="890" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/ca/visualize/CAVisualizer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="169" selection-end="169" vertical-scroll-proportion="0.14506769" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neural-net.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/simple/TrainingSetUtil.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="46" selection-start="282" selection-end="282" vertical-scroll-proportion="0.26785713" />
@@ -456,26 +530,12 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/app/analyst/AnalystFileFormat.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="1" selection-start="525" selection-end="525" vertical-scroll-proportion="0.43194193">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-norm.csv">
-      <provider editor-type-id="text-editor">
-        <state line="3" column="41" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
+        <state line="14" column="1" selection-start="525" selection-end="525" vertical-scroll-proportion="0.43194193" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.csv">
       <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
       <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
@@ -488,12 +548,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/NeuralNet.java">
+    <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/output/BasicOutputField.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="203" column="17" selection-start="7633" selection-end="7633" vertical-scroll-proportion="4.8068967">
+        <state line="6" column="87" selection-start="248" selection-end="248" vertical-scroll-proportion="-3.4">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/output/OutputField.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="17" selection-start="178" selection-end="178" vertical-scroll-proportion="-3.4">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/input/BasicInputField.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="78" selection-start="238" selection-end="238" vertical-scroll-proportion="-1.36">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/output/nominal/OutputOneOf.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="54" selection-start="597" selection-end="597" vertical-scroll-proportion="-8.16">
+          <folding>
+            <element signature="e#0#1221#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/DataNormalization.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="167" selection-end="167" vertical-scroll-proportion="-0.37777779">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/input/InputFieldCSV.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="75" selection-start="235" selection-end="235" vertical-scroll-proportion="-3.4">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/input/InputFieldCSVText.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="11" selection-start="419" selection-end="419" vertical-scroll-proportion="-7.48">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/output/nominal/NominalItem.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="19" selection-start="791" selection-end="791" vertical-scroll-proportion="-14.96">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/encog-core-3.2.0-SNAPSHOT.jar!/org/encog/util/normalize/input/InputField.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="17" selection-start="177" selection-end="177" vertical-scroll-proportion="-3.4">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/OutputBinary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="22" selection-start="1897" selection-end="1965" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7713#7721#0" expanded="true" />
+            <element signature="e#800#813#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/NeuralNet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="169" column="57" selection-start="6518" selection-end="6518" vertical-scroll-proportion="0.53608245">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6323#6331#0" expanded="true" />
           </folding>
         </state>
       </provider>
