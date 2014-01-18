@@ -34,7 +34,7 @@ import com.martiansoftware.jsap.*;
  *
  */
 public class NeuralNet {
-    public static final File MYDIR = new File(".");
+    public static final File MYDIR = new File("./tests");
     public static final double MAX_ERROR = 0.01;
     public static final double MAX_EPOCH = 1000;
 
@@ -61,8 +61,19 @@ public class NeuralNet {
 
         JSAPResult config = jsap.parse(args);
         if ( jsap.messagePrinted() ) System.exit( 1 );
+//
+//        NeuralNet nn = new NeuralNet(config.getIntArray("layer"), config.getString("training file"));
 
-        NeuralNet nn = new NeuralNet(config.getIntArray("layer"), config.getString("training file"));
+        File folder = new File("./tests/");
+        for (final File fileEntry : folder.listFiles()) {
+            if (fileEntry.isFile()) {
+                if(fileEntry.getName().matches("set_.*[^(png)]")){
+                    System.out.println(fileEntry.getName());
+                    NeuralNet nn = new NeuralNet(config.getIntArray("layer"), fileEntry.getName());
+                }
+            }
+        }
+
     }
 
 
@@ -122,8 +133,8 @@ public class NeuralNet {
 
         // test the neural network
         System.out.println("Neural Network Results:");
-        CSVWriter outputCSV = new CSVWriter(new FileWriter("output.csv"), ',');
-        PrintWriter metricsOut = new PrintWriter("metrics.csv");
+        CSVWriter outputCSV = new CSVWriter(new FileWriter("./results/" + data_file + "_output.csv"), ',');
+        PrintWriter metricsOut = new PrintWriter("./results/" + data_file + "_metrics.csv");
         String[] cols = {"X", "Y", "color"};
         Map colMap = new HashMap<Integer,Integer>();
         outputCSV.writeNext(cols);
@@ -136,7 +147,12 @@ public class NeuralNet {
                     + "\t\t,ideal=" + Arrays.toString(pair.getIdeal().getData())
             );
 
-            String[] row = {Double.toString(input.getData()[0]),Double.toString(input.getData()[1]),"3"};
+            String[] row = {Double.toString(input.getData()[0]),
+                    Double.toString(input.getData()[1]),
+                    "3",
+                    Arrays.toString(output.getData()),
+                    Arrays.toString(pair.getIdeal().getData())
+            };
             outputCSV.writeNext(row);
 
             metricsOut.println(getColor(colMap, Arrays.hashCode(normalizeOutput(output.getData()))) + " " +
@@ -166,8 +182,8 @@ public class NeuralNet {
     public void run() throws Exception {
         normalizeFile(data_file, norm_data_file, true);
         divide(0.25);
-        MLDataSet trainingSet = new CSVNeuralDataSet(norm_training_file, 2,outputNodesNumber, false);
-        MLDataSet testSet = new CSVNeuralDataSet(norm_test_file, 2,outputNodesNumber, false);
+        MLDataSet trainingSet = new CSVNeuralDataSet(MYDIR + File.separator + norm_training_file, 2,outputNodesNumber, false);
+        MLDataSet testSet = new CSVNeuralDataSet(MYDIR + File.separator + norm_test_file, 2,outputNodesNumber, false);
 
         BasicNetwork network = createNetwork();
         train(network, trainingSet);
@@ -193,7 +209,7 @@ public class NeuralNet {
     * sama barwe mialy taka sama reprezentacje tekstowa
     */
     public void normalizeFile(String source, String target, boolean outputType) {
-        ReadCSV r = new ReadCSV(source, false, ',');
+        ReadCSV r = new ReadCSV(MYDIR + File.separator + source, false, ',');
         Set<String> colors = new HashSet<String>();
         while (r.next()){
             colors.add(r.get(2));
@@ -237,9 +253,9 @@ public class NeuralNet {
         val = Math.abs(val);
         if(val>1.0)val/=1.0;
 
-        BufferedReader br = new BufferedReader(new FileReader(norm_data_file));
-        PrintWriter testDataOut = new PrintWriter(norm_test_file);
-        PrintWriter trainingDataOut = new PrintWriter(norm_training_file);
+        BufferedReader br = new BufferedReader(new FileReader(MYDIR + File.separator + norm_data_file));
+        PrintWriter testDataOut = new PrintWriter(MYDIR + File.separator + norm_test_file);
+        PrintWriter trainingDataOut = new PrintWriter(MYDIR + File.separator + norm_training_file);
         List<String> els = new ArrayList<String>();
         String line = br.readLine();
         while(line != null){
