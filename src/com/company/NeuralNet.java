@@ -37,6 +37,7 @@ public class NeuralNet {
     public static final File MYDIR = new File("./tests");
     public static final double MAX_ERROR = 0.01;
     public static final double MAX_EPOCH = 1000;
+    public static final String res_f = "results.txt";
 
     private  String data_file = null;
     private  String norm_data_file = null;
@@ -79,6 +80,11 @@ public class NeuralNet {
 
         for(int[] l : params){
             File folder = new File("./tests/");
+
+            PrintWriter res_out = new PrintWriter(new BufferedWriter(new FileWriter(res_f, true)));
+            res_out.println("results_" + stringify(l) + "_binary");
+            res_out.close();
+
             for (final File fileEntry : folder.listFiles()) {
                 if (fileEntry.isFile()) {
                     if(fileEntry.getName().matches("set_.*[^(png)]")){
@@ -87,6 +93,11 @@ public class NeuralNet {
                     }
                 }
             }
+
+            res_out = new PrintWriter(new BufferedWriter(new FileWriter(res_f, true)));
+            res_out.println("results_" + stringify(l) + "_one_of");
+            res_out.close();
+
             for (final File fileEntry : folder.listFiles()) {
                 if (fileEntry.isFile()) {
                     if(fileEntry.getName().matches("set_.*[^(png)]")){
@@ -111,7 +122,11 @@ public class NeuralNet {
         } else {
             this.result_file = "results_" + stringify(layers) + "_one_of";
         }
+
         new File("./" + result_file).mkdir();
+        PrintWriter res_out = new PrintWriter(new BufferedWriter(new FileWriter(res_f, true)));
+        res_out.print(trainingFile);
+        res_out.close();
         run(div, outputType);
         Encog.getInstance().shutdown();
     }
@@ -192,8 +207,11 @@ public class NeuralNet {
 //                               getColor(colMap, Arrays.hashCode(normalizeOutput(pair.getIdeal().getData()))));
         }
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("./"+result_file+"/" + data_file + "_params.csv")));
+        PrintWriter res_out = new PrintWriter(new BufferedWriter(new FileWriter(res_f, true)));
         out.println("error: " + error/2);
+        res_out.print("," + error/2);
         out.close();
+        res_out.close();
         outputCSV.close();
         metricsOut.close();
     }
@@ -223,12 +241,21 @@ public class NeuralNet {
 
         BasicNetwork network = createNetwork();
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("./"+result_file+"/" + data_file + "_params.csv", true)));
+        PrintWriter res_out = new PrintWriter(new BufferedWriter(new FileWriter(res_f, true)));
+
         long time = System.currentTimeMillis();
         train(network, trainingSet);
-        out.println("training_time: " + (System.currentTimeMillis() - time));
+        time = System.currentTimeMillis() - time;
+        res_out.print("," + time);
+        out.println("training_time: " + time);
+
         time = System.currentTimeMillis();
         predict(network,testSet);
-        out.println("predict_time: " + (System.currentTimeMillis() - time));
+        time = System.currentTimeMillis() - time;
+        res_out.println("," + time);
+        out.println("predict_time: " + time);
+
+        res_out.close();
         out.close();
     }
 
@@ -328,6 +355,7 @@ public class NeuralNet {
         }
         return sb.toString();
     }
+
 
 }
 
