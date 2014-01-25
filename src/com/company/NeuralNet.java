@@ -34,7 +34,7 @@ import com.martiansoftware.jsap.*;
  *
  */
 public class NeuralNet {
-    public static final File MYDIR = new File(".");
+    public static final File MYDIR = new File("./tests");
     public static final double MAX_ERROR = 0.01;
     public static final double MAX_EPOCH = 1000;
 
@@ -42,6 +42,7 @@ public class NeuralNet {
     private  String norm_data_file = null;
     private  String norm_training_file = null;
     private  String norm_test_file = null;
+    private  String result_file = null;
     private int[] layers = null;
     private int outputNodesNumber = 0;
 
@@ -61,18 +62,57 @@ public class NeuralNet {
 
         JSAPResult config = jsap.parse(args);
         if ( jsap.messagePrinted() ) System.exit( 1 );
+//
+//        NeuralNet nn = new NeuralNet(config.getIntArray("layer"), config.getString("training file"));
 
-        NeuralNet nn = new NeuralNet(config.getIntArray("layer"), config.getString("training file"));
+        List<int[]> params = new ArrayList();
+        int layers[] = new int[]{};
+        params.add(layers);
+        layers = new int[]{10};
+        params.add(layers);
+        layers = new int[]{20};
+        params.add(layers);
+        layers = new int[]{50};
+        params.add(layers);
+        layers = new int[]{10,10};
+        params.add(layers);
+
+        for(int[] l : params){
+            File folder = new File("./tests/");
+            for (final File fileEntry : folder.listFiles()) {
+                if (fileEntry.isFile()) {
+                    if(fileEntry.getName().matches("set_.*[^(png)]")){
+                        System.out.println(fileEntry.getName());
+                        NeuralNet nn = new NeuralNet(l, fileEntry.getName(), 0.25, true);
+                    }
+                }
+            }
+            for (final File fileEntry : folder.listFiles()) {
+                if (fileEntry.isFile()) {
+                    if(fileEntry.getName().matches("set_.*[^(png)]")){
+                        System.out.println(fileEntry.getName());
+                        NeuralNet nn = new NeuralNet(l, fileEntry.getName(), 0.25, false);
+                    }
+                }
+            }
+        }
+
     }
 
 
-    public NeuralNet(int[] layers, String trainingFile  ) throws Exception{
+    public NeuralNet(int[] layers, String trainingFile, double div, boolean outputType) throws Exception{
         this.layers = layers;
         this.data_file = trainingFile;
         this.norm_data_file = "norm_" + trainingFile;
         this.norm_test_file = "test_" + norm_data_file;
         this.norm_training_file = "training_" + norm_data_file;
-        run();
+        if(outputType){
+            this.result_file = "results_" + stringify(layers) + "_binary";
+        } else {
+            this.result_file = "results_" + stringify(layers) + "_one_of";
+        }
+        new File("./" + result_file).mkdir();
+        run(div, outputType);
         Encog.getInstance().shutdown();
     }
 
@@ -122,26 +162,38 @@ public class NeuralNet {
 
         // test the neural network
         System.out.println("Neural Network Results:");
-        CSVWriter outputCSV = new CSVWriter(new FileWriter("output.csv"), ',');
-        PrintWriter metricsOut = new PrintWriter("metrics.csv");
+        CSVWriter outputCSV = new CSVWriter(new FileWriter("./"+result_file+"/" + data_file + "_output.csv"), ',');
+        PrintWriter metricsOut = new PrintWriter("./"+result_file+"/" + data_file + "_metrics.csv");
         String[] cols = {"X", "Y", "color"};
         Map colMap = new HashMap<Integer,Integer>();
         outputCSV.writeNext(cols);
+        Double error = 0.0;
         for(MLDataPair pair: testSet ) {
             MLData input = pair.getInput();
             final MLData output = network.compute(input);
-
-            System.out.println(Arrays.toString(input.getData())
-                    + ", actual=" + Arrays.toString(output.getData())
-                    + "\t\t,ideal=" + Arrays.toString(pair.getIdeal().getData())
-            );
-
-            String[] row = {Double.toString(input.getData()[0]),Double.toString(input.getData()[1]),"3"};
+            double [] result = output.getData();
+            double [] ideal = pair.getIdeal().getData();
+            for(int i=0;i<result.length;i++){
+                error += Math.pow(result[i] - ideal[i], 2);
+            }
+//            System.out.println(Arrays.toString(input.getData())
+//                    + ", actual=" + Arrays.toString(output.getData())
+//                    + "\t\t,ideal=" + Arrays.toString(pair.getIdeal().getData())
+//            );
+//
+            String[] row = {Double.toString(input.getData()[0]),
+                    Double.toString(input.getData()[1]),
+                    Arrays.toString(output.getData()),
+                    Arrays.toString(pair.getIdeal().getData())
+            };
             outputCSV.writeNext(row);
-
-            metricsOut.println(getColor(colMap, Arrays.hashCode(normalizeOutput(output.getData()))) + " " +
-                               getColor(colMap, Arrays.hashCode(normalizeOutput(pair.getIdeal().getData()))));
+//
+//            metricsOut.println(getColor(colMap, Arrays.hashCode(normalizeOutput(output.getData()))) + " " +
+//                               getColor(colMap, Arrays.hashCode(normalizeOutput(pair.getIdeal().getData()))));
         }
+        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("./"+result_file+"/" + data_file + "_params.csv")));
+        out.println("error: " + error/2);
+        out.close();
         outputCSV.close();
         metricsOut.close();
     }
@@ -163,15 +215,21 @@ public class NeuralNet {
         return res;
     }
 
-    public void run() throws Exception {
-        normalizeFile(data_file, norm_data_file, true);
-        divide(0.25);
-        MLDataSet trainingSet = new CSVNeuralDataSet(norm_training_file, 2,outputNodesNumber, false);
-        MLDataSet testSet = new CSVNeuralDataSet(norm_test_file, 2,outputNodesNumber, false);
+    public void run(double div, boolean outputType) throws Exception {
+        normalizeFile(data_file, norm_data_file, outputType);
+        divide(div);
+        MLDataSet trainingSet = new CSVNeuralDataSet(MYDIR + File.separator + norm_training_file, 2,outputNodesNumber, false);
+        MLDataSet testSet = new CSVNeuralDataSet(MYDIR + File.separator + norm_test_file, 2,outputNodesNumber, false);
 
         BasicNetwork network = createNetwork();
+        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("./"+result_file+"/" + data_file + "_params.csv", true)));
+        long time = System.currentTimeMillis();
         train(network, trainingSet);
+        out.println("training_time: " + (System.currentTimeMillis() - time));
+        time = System.currentTimeMillis();
         predict(network,testSet);
+        out.println("predict_time: " + (System.currentTimeMillis() - time));
+        out.close();
     }
 
 
@@ -193,7 +251,7 @@ public class NeuralNet {
     * sama barwe mialy taka sama reprezentacje tekstowa
     */
     public void normalizeFile(String source, String target, boolean outputType) {
-        ReadCSV r = new ReadCSV(source, false, ',');
+        ReadCSV r = new ReadCSV(MYDIR + File.separator + source, false, ',');
         Set<String> colors = new HashSet<String>();
         while (r.next()){
             colors.add(r.get(2));
@@ -235,11 +293,14 @@ public class NeuralNet {
      */
     public void divide(double val) throws IOException {
         val = Math.abs(val);
-        if(val>1.0)val/=1.0;
+        if(val>1.0)val=1.0/val;
 
-        BufferedReader br = new BufferedReader(new FileReader(norm_data_file));
-        PrintWriter testDataOut = new PrintWriter(norm_test_file);
-        PrintWriter trainingDataOut = new PrintWriter(norm_training_file);
+        BufferedReader br = new BufferedReader(new FileReader(MYDIR + File.separator + norm_data_file));
+        File testDataOutFile = new File(MYDIR + File.separator + norm_test_file);
+        File trainingDataOutFile = new File(MYDIR + File.separator + norm_training_file);
+        if(testDataOutFile.exists() && trainingDataOutFile.exists()) return;
+        PrintWriter testDataOut = new PrintWriter(testDataOutFile);
+        PrintWriter trainingDataOut = new PrintWriter(trainingDataOutFile);
         List<String> els = new ArrayList<String>();
         String line = br.readLine();
         while(line != null){
@@ -257,6 +318,15 @@ public class NeuralNet {
         br.close();
         testDataOut.close();
         trainingDataOut.close();
+    }
+
+    public static String stringify(int[] tab){
+        StringBuilder sb = new StringBuilder();
+        if(tab.length>0)sb.append(tab[0]);
+        for(int i=1;i<tab.length;i++){
+            sb.append("-").append(tab[i]);
+        }
+        return sb.toString();
     }
 
 }
