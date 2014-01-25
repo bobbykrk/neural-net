@@ -7,88 +7,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cfdda3d-08ab-45e5-97a7-92186041fe47" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_10_3_3_eq_metrics.csv" afterPath="$PROJECT_DIR$/results/set_10_3_3_eq_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_11_3_3_eq_metrics.csv" afterPath="$PROJECT_DIR$/results/set_11_3_3_eq_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_12_3_3_eq_metrics.csv" afterPath="$PROJECT_DIR$/results/set_12_3_3_eq_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_13_8_rand_metrics.csv" afterPath="$PROJECT_DIR$/results/set_13_8_rand_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_14_8_rand_metrics.csv" afterPath="$PROJECT_DIR$/results/set_14_8_rand_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_15_8_rand_metrics.csv" afterPath="$PROJECT_DIR$/results/set_15_8_rand_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_16_8_rand_metrics.csv" afterPath="$PROJECT_DIR$/results/set_16_8_rand_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_17_8_rand_metrics.csv" afterPath="$PROJECT_DIR$/results/set_17_8_rand_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_18_8_rand_metrics.csv" afterPath="$PROJECT_DIR$/results/set_18_8_rand_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_19_8_rand_metrics.csv" afterPath="$PROJECT_DIR$/results/set_19_8_rand_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_1_2_eq_metrics.csv" afterPath="$PROJECT_DIR$/results/set_1_2_eq_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_20_8_rand_metrics.csv" afterPath="$PROJECT_DIR$/results/set_20_8_rand_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_2_2_eq_metrics.csv" afterPath="$PROJECT_DIR$/results/set_2_2_eq_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_3_2_eq_metrics.csv" afterPath="$PROJECT_DIR$/results/set_3_2_eq_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_4_2_eq_metrics.csv" afterPath="$PROJECT_DIR$/results/set_4_2_eq_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_5_3_2_eq_metrics.csv" afterPath="$PROJECT_DIR$/results/set_5_3_2_eq_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_6_3_2_eq_metrics.csv" afterPath="$PROJECT_DIR$/results/set_6_3_2_eq_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_7_3_2_eq_metrics.csv" afterPath="$PROJECT_DIR$/results/set_7_3_2_eq_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_8_3_2_eq_metrics.csv" afterPath="$PROJECT_DIR$/results/set_8_3_2_eq_metrics.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_9_3_3_eq_metrics.csv" afterPath="$PROJECT_DIR$/results/set_9_3_3_eq_metrics.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/NeuralNet.java" afterPath="$PROJECT_DIR$/src/com/company/NeuralNet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commands.r" afterPath="$PROJECT_DIR$/commands.r" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_10_3_3_eq_output.csv" afterPath="$PROJECT_DIR$/results/set_10_3_3_eq_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_11_3_3_eq_output.csv" afterPath="$PROJECT_DIR$/results/set_11_3_3_eq_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_12_3_3_eq_output.csv" afterPath="$PROJECT_DIR$/results/set_12_3_3_eq_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_13_8_rand_output.csv" afterPath="$PROJECT_DIR$/results/set_13_8_rand_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_14_8_rand_output.csv" afterPath="$PROJECT_DIR$/results/set_14_8_rand_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_15_8_rand_output.csv" afterPath="$PROJECT_DIR$/results/set_15_8_rand_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_16_8_rand_output.csv" afterPath="$PROJECT_DIR$/results/set_16_8_rand_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_17_8_rand_output.csv" afterPath="$PROJECT_DIR$/results/set_17_8_rand_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_18_8_rand_output.csv" afterPath="$PROJECT_DIR$/results/set_18_8_rand_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_19_8_rand_output.csv" afterPath="$PROJECT_DIR$/results/set_19_8_rand_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_1_2_eq_output.csv" afterPath="$PROJECT_DIR$/results/set_1_2_eq_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_20_8_rand_output.csv" afterPath="$PROJECT_DIR$/results/set_20_8_rand_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_2_2_eq_output.csv" afterPath="$PROJECT_DIR$/results/set_2_2_eq_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_3_2_eq_output.csv" afterPath="$PROJECT_DIR$/results/set_3_2_eq_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_4_2_eq_output.csv" afterPath="$PROJECT_DIR$/results/set_4_2_eq_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_5_3_2_eq_output.csv" afterPath="$PROJECT_DIR$/results/set_5_3_2_eq_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_6_3_2_eq_output.csv" afterPath="$PROJECT_DIR$/results/set_6_3_2_eq_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_7_3_2_eq_output.csv" afterPath="$PROJECT_DIR$/results/set_7_3_2_eq_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_8_3_2_eq_output.csv" afterPath="$PROJECT_DIR$/results/set_8_3_2_eq_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/set_9_3_3_eq_output.csv" afterPath="$PROJECT_DIR$/results/set_9_3_3_eq_output.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_10_3_3_eq" afterPath="$PROJECT_DIR$/tests/test_norm_set_10_3_3_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_11_3_3_eq" afterPath="$PROJECT_DIR$/tests/test_norm_set_11_3_3_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_12_3_3_eq" afterPath="$PROJECT_DIR$/tests/test_norm_set_12_3_3_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_13_8_rand" afterPath="$PROJECT_DIR$/tests/test_norm_set_13_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_14_8_rand" afterPath="$PROJECT_DIR$/tests/test_norm_set_14_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_15_8_rand" afterPath="$PROJECT_DIR$/tests/test_norm_set_15_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_16_8_rand" afterPath="$PROJECT_DIR$/tests/test_norm_set_16_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_17_8_rand" afterPath="$PROJECT_DIR$/tests/test_norm_set_17_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_18_8_rand" afterPath="$PROJECT_DIR$/tests/test_norm_set_18_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_19_8_rand" afterPath="$PROJECT_DIR$/tests/test_norm_set_19_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_1_2_eq" afterPath="$PROJECT_DIR$/tests/test_norm_set_1_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_20_8_rand" afterPath="$PROJECT_DIR$/tests/test_norm_set_20_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_2_2_eq" afterPath="$PROJECT_DIR$/tests/test_norm_set_2_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_3_2_eq" afterPath="$PROJECT_DIR$/tests/test_norm_set_3_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_4_2_eq" afterPath="$PROJECT_DIR$/tests/test_norm_set_4_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_5_3_2_eq" afterPath="$PROJECT_DIR$/tests/test_norm_set_5_3_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_6_3_2_eq" afterPath="$PROJECT_DIR$/tests/test_norm_set_6_3_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_7_3_2_eq" afterPath="$PROJECT_DIR$/tests/test_norm_set_7_3_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_8_3_2_eq" afterPath="$PROJECT_DIR$/tests/test_norm_set_8_3_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_norm_set_9_3_3_eq" afterPath="$PROJECT_DIR$/tests/test_norm_set_9_3_3_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_10_3_3_eq" afterPath="$PROJECT_DIR$/tests/training_norm_set_10_3_3_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_11_3_3_eq" afterPath="$PROJECT_DIR$/tests/training_norm_set_11_3_3_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_12_3_3_eq" afterPath="$PROJECT_DIR$/tests/training_norm_set_12_3_3_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_13_8_rand" afterPath="$PROJECT_DIR$/tests/training_norm_set_13_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_14_8_rand" afterPath="$PROJECT_DIR$/tests/training_norm_set_14_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_15_8_rand" afterPath="$PROJECT_DIR$/tests/training_norm_set_15_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_16_8_rand" afterPath="$PROJECT_DIR$/tests/training_norm_set_16_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_17_8_rand" afterPath="$PROJECT_DIR$/tests/training_norm_set_17_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_18_8_rand" afterPath="$PROJECT_DIR$/tests/training_norm_set_18_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_19_8_rand" afterPath="$PROJECT_DIR$/tests/training_norm_set_19_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_1_2_eq" afterPath="$PROJECT_DIR$/tests/training_norm_set_1_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_20_8_rand" afterPath="$PROJECT_DIR$/tests/training_norm_set_20_8_rand" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_2_2_eq" afterPath="$PROJECT_DIR$/tests/training_norm_set_2_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_3_2_eq" afterPath="$PROJECT_DIR$/tests/training_norm_set_3_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_4_2_eq" afterPath="$PROJECT_DIR$/tests/training_norm_set_4_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_5_3_2_eq" afterPath="$PROJECT_DIR$/tests/training_norm_set_5_3_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_6_3_2_eq" afterPath="$PROJECT_DIR$/tests/training_norm_set_6_3_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_7_3_2_eq" afterPath="$PROJECT_DIR$/tests/training_norm_set_7_3_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_8_3_2_eq" afterPath="$PROJECT_DIR$/tests/training_norm_set_8_3_2_eq" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/training_norm_set_9_3_3_eq" afterPath="$PROJECT_DIR$/tests/training_norm_set_9_3_3_eq" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_10000_time_close" afterPath="$PROJECT_DIR$/tests/norm_set_10000_time_close" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_1000_close_time" afterPath="$PROJECT_DIR$/tests/norm_set_1000_close_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_1000_time" afterPath="$PROJECT_DIR$/tests/norm_set_1000_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_10_3_3_eq" afterPath="$PROJECT_DIR$/tests/norm_set_10_3_3_eq" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_11_3_3_eq" afterPath="$PROJECT_DIR$/tests/norm_set_11_3_3_eq" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_12_3_3_eq" afterPath="$PROJECT_DIR$/tests/norm_set_12_3_3_eq" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_13_8_rand" afterPath="$PROJECT_DIR$/tests/norm_set_13_8_rand" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_14_8_rand" afterPath="$PROJECT_DIR$/tests/norm_set_14_8_rand" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_1500_close_time" afterPath="$PROJECT_DIR$/tests/norm_set_1500_close_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_1500_time" afterPath="$PROJECT_DIR$/tests/norm_set_1500_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_15_8_rand" afterPath="$PROJECT_DIR$/tests/norm_set_15_8_rand" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_16_8_rand" afterPath="$PROJECT_DIR$/tests/norm_set_16_8_rand" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_17_8_rand" afterPath="$PROJECT_DIR$/tests/norm_set_17_8_rand" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_18_8_rand" afterPath="$PROJECT_DIR$/tests/norm_set_18_8_rand" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_19_8_rand" afterPath="$PROJECT_DIR$/tests/norm_set_19_8_rand" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_1_2_eq" afterPath="$PROJECT_DIR$/tests/norm_set_1_2_eq" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_2000_close_time" afterPath="$PROJECT_DIR$/tests/norm_set_2000_close_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_2000_time" afterPath="$PROJECT_DIR$/tests/norm_set_2000_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_20_8_rand" afterPath="$PROJECT_DIR$/tests/norm_set_20_8_rand" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_2500_close_time" afterPath="$PROJECT_DIR$/tests/norm_set_2500_close_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_2500_time" afterPath="$PROJECT_DIR$/tests/norm_set_2500_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_2_2_eq" afterPath="$PROJECT_DIR$/tests/norm_set_2_2_eq" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_3000_close_time" afterPath="$PROJECT_DIR$/tests/norm_set_3000_close_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_3000_time" afterPath="$PROJECT_DIR$/tests/norm_set_3000_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_3500_close_time" afterPath="$PROJECT_DIR$/tests/norm_set_3500_close_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_3500_time" afterPath="$PROJECT_DIR$/tests/norm_set_3500_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_3_2_eq" afterPath="$PROJECT_DIR$/tests/norm_set_3_2_eq" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_4000_close_time" afterPath="$PROJECT_DIR$/tests/norm_set_4000_close_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_4000_time" afterPath="$PROJECT_DIR$/tests/norm_set_4000_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_4500_close_time" afterPath="$PROJECT_DIR$/tests/norm_set_4500_close_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_4500_time" afterPath="$PROJECT_DIR$/tests/norm_set_4500_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_4_2_eq" afterPath="$PROJECT_DIR$/tests/norm_set_4_2_eq" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_5000_close_time" afterPath="$PROJECT_DIR$/tests/norm_set_5000_close_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_5000_time" afterPath="$PROJECT_DIR$/tests/norm_set_5000_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_500_close_time" afterPath="$PROJECT_DIR$/tests/norm_set_500_close_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_500_time" afterPath="$PROJECT_DIR$/tests/norm_set_500_time" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_5_3_2_eq" afterPath="$PROJECT_DIR$/tests/norm_set_5_3_2_eq" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_6000_time_close" afterPath="$PROJECT_DIR$/tests/norm_set_6000_time_close" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_6_3_2_eq" afterPath="$PROJECT_DIR$/tests/norm_set_6_3_2_eq" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_7000_time_close" afterPath="$PROJECT_DIR$/tests/norm_set_7000_time_close" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_7_3_2_eq" afterPath="$PROJECT_DIR$/tests/norm_set_7_3_2_eq" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_8000_time_close" afterPath="$PROJECT_DIR$/tests/norm_set_8000_time_close" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_8_3_2_eq" afterPath="$PROJECT_DIR$/tests/norm_set_8_3_2_eq" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_9000_time_close" afterPath="$PROJECT_DIR$/tests/norm_set_9000_time_close" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/norm_set_9_3_3_eq" afterPath="$PROJECT_DIR$/tests/norm_set_9_3_3_eq" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="neural-net.iws" />
@@ -98,7 +62,7 @@
     <file path="/test.csv" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1383496650572" ignored="false" />
     <file path="/fragment.java" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1386520652066" ignored="false" />
     <file path="/OutputBinary.java" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1386520689021" ignored="false" />
-    <file path="/NeuralNet.java" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1390644436696" ignored="false" />
+    <file path="/NeuralNet.java" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1390648144798" ignored="false" />
     <file path="/a.dummy" changelist="1cfdda3d-08ab-45e5-97a7-92186041fe47" time="1386531402061" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -130,7 +94,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/company/NeuralNet.java" line="147" class="com.company.NeuralNet" package="com.company">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/company/NeuralNet.java" line="176" class="com.company.NeuralNet" package="com.company">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -145,7 +109,22 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/company/NeuralNet.java" line="165" class="com.company.NeuralNet" package="com.company">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/company/NeuralNet.java" line="194" class="com.company.NeuralNet" package="com.company">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/company/NeuralNet.java" line="104" class="com.company.NeuralNet" package="com.company">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -210,11 +189,11 @@
       <file leaf-file-name="NeuralNet.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/NeuralNet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="271" column="76" selection-start="10952" selection-end="10952" vertical-scroll-proportion="0.47959185">
+            <state line="93" column="88" selection-start="3841" selection-end="3841" vertical-scroll-proportion="0.4338118">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8916#8924#0" expanded="true" />
-                <element signature="e#11137#11145#0" expanded="true" />
+                <element signature="e#10120#10128#0" expanded="true" />
+                <element signature="e#12341#12349#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -322,7 +301,7 @@
     <option name="x" value="128" />
     <option name="y" value="34" />
     <option name="width" value="1440" />
-    <option name="height" value="940" />
+    <option name="height" value="950" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -537,8 +516,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="128" y="34" width="1440" height="940" extended-state="1" />
-    <editor active="false" />
+    <frame x="128" y="34" width="1440" height="950" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -546,21 +525,21 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6427657" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5271808" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32983193" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277849" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32743362" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.249694" sideWeight="0.69434834" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07910015" sideWeight="0.78617156" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21382843" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07910015" sideWeight="0.8255373" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1744627" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -734,11 +713,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/NeuralNet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="271" column="76" selection-start="10952" selection-end="10952" vertical-scroll-proportion="0.47959185">
+        <state line="93" column="88" selection-start="3841" selection-end="3841" vertical-scroll-proportion="0.4338118">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#8916#8924#0" expanded="true" />
-            <element signature="e#11137#11145#0" expanded="true" />
+            <element signature="e#10120#10128#0" expanded="true" />
+            <element signature="e#12341#12349#0" expanded="true" />
           </folding>
         </state>
       </provider>

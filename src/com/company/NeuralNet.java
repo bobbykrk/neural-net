@@ -42,6 +42,7 @@ public class NeuralNet {
     private  String norm_data_file = null;
     private  String norm_training_file = null;
     private  String norm_test_file = null;
+    private  String result_file = null;
     private int[] layers = null;
     private int outputNodesNumber = 0;
 
@@ -64,12 +65,34 @@ public class NeuralNet {
 //
 //        NeuralNet nn = new NeuralNet(config.getIntArray("layer"), config.getString("training file"));
 
-        File folder = new File("./tests/");
-        for (final File fileEntry : folder.listFiles()) {
-            if (fileEntry.isFile()) {
-                if(fileEntry.getName().matches("set_.*[^(png)]")){
-                    System.out.println(fileEntry.getName());
-                    NeuralNet nn = new NeuralNet(config.getIntArray("layer"), fileEntry.getName());
+        List<int[]> params = new ArrayList();
+        int layers[] = new int[]{};
+        params.add(layers);
+        layers = new int[]{10};
+        params.add(layers);
+        layers = new int[]{20};
+        params.add(layers);
+        layers = new int[]{50};
+        params.add(layers);
+        layers = new int[]{10,10};
+        params.add(layers);
+
+        for(int[] l : params){
+            File folder = new File("./tests/");
+            for (final File fileEntry : folder.listFiles()) {
+                if (fileEntry.isFile()) {
+                    if(fileEntry.getName().matches("set_.*[^(png)]")){
+                        System.out.println(fileEntry.getName());
+                        NeuralNet nn = new NeuralNet(l, fileEntry.getName(), 0.25, true);
+                    }
+                }
+            }
+            for (final File fileEntry : folder.listFiles()) {
+                if (fileEntry.isFile()) {
+                    if(fileEntry.getName().matches("set_.*[^(png)]")){
+                        System.out.println(fileEntry.getName());
+                        NeuralNet nn = new NeuralNet(l, fileEntry.getName(), 0.25, false);
+                    }
                 }
             }
         }
@@ -77,13 +100,19 @@ public class NeuralNet {
     }
 
 
-    public NeuralNet(int[] layers, String trainingFile  ) throws Exception{
+    public NeuralNet(int[] layers, String trainingFile, double div, boolean outputType) throws Exception{
         this.layers = layers;
         this.data_file = trainingFile;
         this.norm_data_file = "norm_" + trainingFile;
         this.norm_test_file = "test_" + norm_data_file;
         this.norm_training_file = "training_" + norm_data_file;
-        run();
+        if(outputType){
+            this.result_file = "results_" + stringify(layers) + "_binary";
+        } else {
+            this.result_file = "results_" + stringify(layers) + "_one_of";
+        }
+        new File("./" + result_file).mkdir();
+        run(div, outputType);
         Encog.getInstance().shutdown();
     }
 
@@ -133,8 +162,8 @@ public class NeuralNet {
 
         // test the neural network
         System.out.println("Neural Network Results:");
-        CSVWriter outputCSV = new CSVWriter(new FileWriter("./results/" + data_file + "_output.csv"), ',');
-        PrintWriter metricsOut = new PrintWriter("./results/" + data_file + "_metrics.csv");
+        CSVWriter outputCSV = new CSVWriter(new FileWriter("./"+result_file+"/" + data_file + "_output.csv"), ',');
+        PrintWriter metricsOut = new PrintWriter("./"+result_file+"/" + data_file + "_metrics.csv");
         String[] cols = {"X", "Y", "color"};
         Map colMap = new HashMap<Integer,Integer>();
         outputCSV.writeNext(cols);
@@ -145,7 +174,7 @@ public class NeuralNet {
             double [] result = output.getData();
             double [] ideal = pair.getIdeal().getData();
             for(int i=0;i<result.length;i++){
-                error += Math.pow(result[i]-ideal[i],2);
+                error += Math.pow(result[i] - ideal[i], 2);
             }
 //            System.out.println(Arrays.toString(input.getData())
 //                    + ", actual=" + Arrays.toString(output.getData())
@@ -162,7 +191,7 @@ public class NeuralNet {
 //            metricsOut.println(getColor(colMap, Arrays.hashCode(normalizeOutput(output.getData()))) + " " +
 //                               getColor(colMap, Arrays.hashCode(normalizeOutput(pair.getIdeal().getData()))));
         }
-        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("./results/" + data_file + "_params.csv")));
+        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("./"+result_file+"/" + data_file + "_params.csv")));
         out.println("error: " + error/2);
         out.close();
         outputCSV.close();
@@ -186,14 +215,14 @@ public class NeuralNet {
         return res;
     }
 
-    public void run() throws Exception {
-        normalizeFile(data_file, norm_data_file, true);
-        divide(0.25);
+    public void run(double div, boolean outputType) throws Exception {
+        normalizeFile(data_file, norm_data_file, outputType);
+        divide(div);
         MLDataSet trainingSet = new CSVNeuralDataSet(MYDIR + File.separator + norm_training_file, 2,outputNodesNumber, false);
         MLDataSet testSet = new CSVNeuralDataSet(MYDIR + File.separator + norm_test_file, 2,outputNodesNumber, false);
 
         BasicNetwork network = createNetwork();
-        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("./results/" + data_file + "_params.csv", true)));
+        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("./"+result_file+"/" + data_file + "_params.csv", true)));
         long time = System.currentTimeMillis();
         train(network, trainingSet);
         out.println("training_time: " + (System.currentTimeMillis() - time));
@@ -289,6 +318,15 @@ public class NeuralNet {
         br.close();
         testDataOut.close();
         trainingDataOut.close();
+    }
+
+    public static String stringify(int[] tab){
+        StringBuilder sb = new StringBuilder();
+        if(tab.length>0)sb.append(tab[0]);
+        for(int i=1;i<tab.length;i++){
+            sb.append("-").append(tab[i]);
+        }
+        return sb.toString();
     }
 
 }
