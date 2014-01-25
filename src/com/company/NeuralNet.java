@@ -138,26 +138,33 @@ public class NeuralNet {
         String[] cols = {"X", "Y", "color"};
         Map colMap = new HashMap<Integer,Integer>();
         outputCSV.writeNext(cols);
+        Double error = 0.0;
         for(MLDataPair pair: testSet ) {
             MLData input = pair.getInput();
             final MLData output = network.compute(input);
-
-            System.out.println(Arrays.toString(input.getData())
-                    + ", actual=" + Arrays.toString(output.getData())
-                    + "\t\t,ideal=" + Arrays.toString(pair.getIdeal().getData())
-            );
-
+            double [] result = output.getData();
+            double [] ideal = pair.getIdeal().getData();
+            for(int i=0;i<result.length;i++){
+                error += Math.pow(result[i]-ideal[i],2);
+            }
+//            System.out.println(Arrays.toString(input.getData())
+//                    + ", actual=" + Arrays.toString(output.getData())
+//                    + "\t\t,ideal=" + Arrays.toString(pair.getIdeal().getData())
+//            );
+//
             String[] row = {Double.toString(input.getData()[0]),
                     Double.toString(input.getData()[1]),
-                    "3",
                     Arrays.toString(output.getData()),
                     Arrays.toString(pair.getIdeal().getData())
             };
             outputCSV.writeNext(row);
-
-            metricsOut.println(getColor(colMap, Arrays.hashCode(normalizeOutput(output.getData()))) + " " +
-                               getColor(colMap, Arrays.hashCode(normalizeOutput(pair.getIdeal().getData()))));
+//
+//            metricsOut.println(getColor(colMap, Arrays.hashCode(normalizeOutput(output.getData()))) + " " +
+//                               getColor(colMap, Arrays.hashCode(normalizeOutput(pair.getIdeal().getData()))));
         }
+        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("./results/" + data_file + "_params.csv")));
+        out.println("error: " + error/2);
+        out.close();
         outputCSV.close();
         metricsOut.close();
     }
@@ -186,8 +193,14 @@ public class NeuralNet {
         MLDataSet testSet = new CSVNeuralDataSet(MYDIR + File.separator + norm_test_file, 2,outputNodesNumber, false);
 
         BasicNetwork network = createNetwork();
+        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("./results/" + data_file + "_params.csv", true)));
+        long time = System.currentTimeMillis();
         train(network, trainingSet);
+        out.println("training_time: " + (System.currentTimeMillis() - time));
+        time = System.currentTimeMillis();
         predict(network,testSet);
+        out.println("predict_time: " + (System.currentTimeMillis() - time));
+        out.close();
     }
 
 
@@ -251,11 +264,14 @@ public class NeuralNet {
      */
     public void divide(double val) throws IOException {
         val = Math.abs(val);
-        if(val>1.0)val/=1.0;
+        if(val>1.0)val=1.0/val;
 
         BufferedReader br = new BufferedReader(new FileReader(MYDIR + File.separator + norm_data_file));
-        PrintWriter testDataOut = new PrintWriter(MYDIR + File.separator + norm_test_file);
-        PrintWriter trainingDataOut = new PrintWriter(MYDIR + File.separator + norm_training_file);
+        File testDataOutFile = new File(MYDIR + File.separator + norm_test_file);
+        File trainingDataOutFile = new File(MYDIR + File.separator + norm_training_file);
+        if(testDataOutFile.exists() && trainingDataOutFile.exists()) return;
+        PrintWriter testDataOut = new PrintWriter(testDataOutFile);
+        PrintWriter trainingDataOut = new PrintWriter(trainingDataOutFile);
         List<String> els = new ArrayList<String>();
         String line = br.readLine();
         while(line != null){
