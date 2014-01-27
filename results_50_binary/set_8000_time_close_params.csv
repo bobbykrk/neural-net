@@ -1,3 +1,3 @@
-error: 769.5
-training_time: 7423
-predict_time: 6
+error: 1000.0
+training_time: 15688
+predict_time: 16

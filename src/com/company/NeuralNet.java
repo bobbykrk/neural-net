@@ -36,7 +36,7 @@ import com.martiansoftware.jsap.*;
 public class NeuralNet {
     public static final File MYDIR = new File("./tests");
     public static final double MAX_ERROR = 0.01;
-    public static final double MAX_EPOCH = 1000;
+    public static final double MAX_EPOCH = 2000;
     public static final String res_f = "results.txt";
 
     private  String data_file = null;
@@ -93,8 +93,11 @@ public class NeuralNet {
                     }
                 }
             }
+        }
+        for(int[] l : params){
+            File folder = new File("./tests/");
 
-            res_out = new PrintWriter(new BufferedWriter(new FileWriter(res_f, true)));
+            PrintWriter res_out = new PrintWriter(new BufferedWriter(new FileWriter(res_f, true)));
             res_out.println("results_" + stringify(l) + "_one_of");
             res_out.close();
 
@@ -107,6 +110,7 @@ public class NeuralNet {
                 }
             }
         }
+
 
     }
 
@@ -172,6 +176,12 @@ public class NeuralNet {
         train.finishTraining();
     }
 
+    /**
+     * klasyfikacja punktu
+     * @param network
+     * @param testSet
+     * @throws Exception
+     */
     public void predict(BasicNetwork network, MLDataSet testSet) throws Exception
     {
 
@@ -216,6 +226,12 @@ public class NeuralNet {
         metricsOut.close();
     }
 
+    /**
+     * pobiera kolor punktu z mapy lub dodaje i pobiera
+     * @param colMap
+     * @param col
+     * @return
+     */
     private String getColor(Map<Integer, Integer> colMap, int col){
         Integer val = colMap.get(col);
         if(val == null){
@@ -233,6 +249,12 @@ public class NeuralNet {
         return res;
     }
 
+    /**
+     * uruchamia przetwarzanie
+     * @param div odsetek danych testowych [0;1]
+     * @param outputType czy wyjście binarne czy "1 z N"
+     * @throws Exception
+     */
     public void run(double div, boolean outputType) throws Exception {
         normalizeFile(data_file, norm_data_file, outputType);
         divide(div);
@@ -347,6 +369,11 @@ public class NeuralNet {
         trainingDataOut.close();
     }
 
+    /**
+     * zamienia teblicę typu int na string np.: [1,2,3] -> "1-2-3"
+     * @param tab
+     * @return
+     */
     public static String stringify(int[] tab){
         StringBuilder sb = new StringBuilder();
         if(tab.length>0)sb.append(tab[0]);

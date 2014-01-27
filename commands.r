@@ -137,6 +137,27 @@ pts1 <- mvrnorm(n=2500, c(0, 0), matrix(c(3, 0, 6, 3), 2, 2), empirical = TRUE)
 pts2 <- mvrnorm(n=2500, c(10, 10), matrix(c(3, 0, 6, 3), 2, 2), empirical = TRUE)
 vals <- list(pts1, pts2)
 points(vals, 'set_5000_time');
+pts1 <- mvrnorm(n=3000, c(0, 0), matrix(c(3, 0, 6, 3), 2, 2), empirical = TRUE)
+pts2 <- mvrnorm(n=3000, c(10, 10), matrix(c(3, 0, 6, 3), 2, 2), empirical = TRUE)
+vals <- list(pts1, pts2)
+points(vals, 'set_6000_time');
+pts1 <- mvrnorm(n=3500, c(0, 0), matrix(c(3, 0, 6, 3), 2, 2), empirical = TRUE)
+pts2 <- mvrnorm(n=3500, c(10, 10), matrix(c(3, 0, 6, 3), 2, 2), empirical = TRUE)
+vals <- list(pts1, pts2)
+points(vals, 'set_7000_time');
+pts1 <- mvrnorm(n=4000, c(0, 0), matrix(c(3, 0, 6, 3), 2, 2), empirical = TRUE)
+pts2 <- mvrnorm(n=4000, c(10, 10), matrix(c(3, 0, 6, 3), 2, 2), empirical = TRUE)
+vals <- list(pts1, pts2)
+points(vals, 'set_8000_time');
+pts1 <- mvrnorm(n=4500, c(0, 0), matrix(c(3, 0, 6, 3), 2, 2), empirical = TRUE)
+pts2 <- mvrnorm(n=4500, c(10, 10), matrix(c(3, 0, 6, 3), 2, 2), empirical = TRUE)
+vals <- list(pts1, pts2)
+points(vals, 'set_9000_time');
+pts1 <- mvrnorm(n=5000, c(0, 0), matrix(c(3, 0, 6, 3), 2, 2), empirical = TRUE)
+pts2 <- mvrnorm(n=5000, c(10, 10), matrix(c(3, 0, 6, 3), 2, 2), empirical = TRUE)
+vals <- list(pts1, pts2)
+points(vals, 'set_10000_time');
+
 
 pts1 <- mvrnorm(n=250, c(4, 4), matrix(c(3, 0, 6, 3), 2, 2), empirical = TRUE)
 pts2 <- mvrnorm(n=250, c(6, 6), matrix(c(3, 0, 6, 3), 2, 2), empirical = TRUE)
